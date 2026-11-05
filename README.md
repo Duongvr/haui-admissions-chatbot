@@ -301,3 +301,18 @@ MIT License - Xem LICENSE file
 - PostgreSQL - Database
 - ChromaDB - Vector store
 - LangChain - RAG pipeline
+
+
+## Licensing
+
+This project is licensed under the Apache License 2.0.
+
+### Third-party components
+
+This project includes:
+
+- Open WebUI (Open WebUI License)
+- Ollama (MIT License)
+- pgvector (PostgreSQL License)
+
+See THIRD_PARTY_LICENSES.md for details.
