@@ -1,0 +1,5 @@
+# Loại bỏ file trọng số mô hình trong folder models
+models/weights/*.gguf
+models/weights/*.bin
+models/weights/*.pt
+!models/weights/.gitkeep

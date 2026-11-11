@@ -1,0 +1,213 @@
+# ============================================
+# HAUI Admissions Chatbot - Git Ignore Rules
+# ============================================
+
+# 1. BẢO MẬT: Thông tin cá nhân & mật khẩu
+# ============================================
+.env
+.env.local
+.env*.local
+.env.*.backup
+.webui_secret_key
+secrets/
+*.key
+*.pem
+*.p12
+.credentials
+.aws/
+
+# 2. DỮ LIỆU NHẠY CẢM (Input/Output chưa xác nhận)
+# ============================================
+data/input/
+data/raw/
+data/pdfs/
+data/raw_documents/
+!data/input/.gitkeep
+!data/raw/.gitkeep
+
+# Dữ liệu xử lý (được kiểm tra rồi mới commit)
+data/processed/review/          # Chưa xác nhận
+data/processed/markdown/        # Có thể lớn, tùy chọn
+
+# 3. RUNTIME & DATABASE (Open WebUI)
+# ============================================
+open-webui/
+!open-webui/data/.gitkeep
+open-webui/data/
+open-webui/data/cache/
+open-webui/data/uploads/
+open-webui/data/vector_db/
+open-webui/*.db
+open-webui/*.sqlite
+open-webui/*.sqlite3
+open-webui/*.log
+
+# 4. PYTHON & VIRTUAL ENVIRONMENT
+# ============================================
+# Venv (tùy chọn: dùng conda)
+venv/
+ENV/
+env/
+.venv
+.env.venv
+haui_env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Python egg
+*.egg-info/
+.installed.cfg
+*.egg
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+
+# 5. IDE & Editor
+# ============================================
+.vscode/
+.vscode_extensions/
+.idea/
+.sublime-project
+.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.editorconfig.local
+
+# PyCharm
+*.iml
+.iws
+.ipr
+
+# VS Code
+.vscode-settings.json
+
+# 6. LỚN & KHÔNG CẦN COMMIT
+# ============================================
+# PDF (dữ liệu gốc, lớn)
+*.pdf
+!docs/**/*.pdf          # Cho phép PDF trong docs
+
+# ZIP (dữ liệu nén)
+*.zip
+!models/weights/        # Model weights có thể là ZIP
+
+# Ollama models (rất lớn, cài trên máy)
+ollama_models/
+models/weights/
+
+# PostgreSQL (cài hệ thống, không commit)
+postgres_data/
+*.sql.backup
+
+# 7. LOGS & TẠM THỜI
+# ============================================
+logs/
+log/
+*.log
+*.log.*
+*.out
+
+eval/reports/
+eval/results/
+tmp/
+temp/
+.temp/
+*.tmp
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# 8. OS SPECIFIC
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+# 9. JUPYTER & NOTEBOOKS (nếu có)
+# ============================================
+.ipynb_checkpoints/
+*.ipynb
+
+# 10. NODE (nếu dùng frontend)
+# ============================================
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+.eslintcache
+
+# 11. DATABASE & BACKUPS
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+*.backup
+dump.sql
+
+# 12. DOCKER (nếu dùng)
+# ============================================
+.dockerignore
+docker-compose.override.yml
+
+# 13. COVERAGE & TEST
+# ============================================
+htmlcov/
+.coverage
+.coverage.*
+.hypothesis/
+.pytest_cache/
+coverage.xml
+
+# 14. GIT LFS (nếu dùng)
+# ============================================
+# Để qua nếu dùng LFS cho dữ liệu lớn
+
+# 15. LOCAL CONFIG (không commit)
+# ============================================
+.env.local
+.env.production.local
+config.local.py
+settings.local.py
+
+# 16. THÊM: ChromaDB (Open WebUI vector)
+# ============================================
+chroma_data/
+*.chroma
+*.sqlite-shm
+*.sqlite-wal
+
+# 17. THÊM: pgvector & PostgreSQL (nếu dùng)
+# ============================================
+pgvector_data/
+pg_data/
+postgres/
