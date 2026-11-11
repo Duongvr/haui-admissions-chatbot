@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 Hanoi University of Industry (HAUI)
+Copyright (c) 2026 Đoàn Đức Dương
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,19 +24,24 @@ SOFTWARE.
 
 Third-party components used in this project:
 
-1. Open WebUI (https://github.com/open-webui/open-webui)
-   - License: MIT
+1. Open WebUI
+   https://github.com/open-webui/open-webui
+   License: MIT
 
-2. Ollama (https://github.com/ollama/ollama)
-   - License: MIT
+2. Ollama
+   https://github.com/ollama/ollama
+   License: MIT
 
-3. PostgreSQL (https://www.postgresql.org/)
-   - License: PostgreSQL License (BSD-style)
+3. PostgreSQL
+   https://www.postgresql.org/
+   License: PostgreSQL License
 
-4. ChromaDB (https://github.com/chroma-core/chroma)
-   - License: Apache License 2.0
+4. ChromaDB
+   https://github.com/chroma-core/chroma
+   License: Apache License 2.0
 
-5. pgvector (https://github.com/pgvector/pgvector)
-   - License: PostgreSQL License (BSD-style)
+5. pgvector
+   https://github.com/pgvector/pgvector
+   License: PostgreSQL License
 
 For additional licensing information, see individual project repositories.
