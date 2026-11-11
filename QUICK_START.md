@@ -1,15 +1,14 @@
-# Quick Start Guide - HAUI Admissions Chatbot
+# Quick Start — HAUI Admissions Chatbot
 
-## 🚀 5-Minute Setup (Windows)
+## 5-Minute Setup (Windows)
 
 ### Prerequisites
+
 - Windows 10/11
 - Python 3.9+
 - PostgreSQL 14+
 - Ollama installed
 - Git (optional)
-
----
 
 ### Step 1: Prepare Python Environment
 
@@ -27,33 +26,29 @@ venv\Scripts\activate
 pip install -r src\requirements.txt
 ```
 
-**Expected time**: 3-5 minutes
-
----
+Estimated time: 3-5 minutes
 
 ### Step 2: Setup PostgreSQL
 
-**Windows - Using pgAdmin or Command Line:**
+**Windows Command Line:**
 
 ```bash
 # Create database
 createdb -U postgres haui_admissions
 
-# Login and run schema
+# Create schema
 psql -U postgres -d haui_admissions -f db\schema.sql
 
 # Load sample data
 psql -U postgres -d haui_admissions -f db\seed_data.sql
 ```
 
-**Verify:**
+Verify:
 ```bash
 psql -U postgres -d haui_admissions -c "SELECT COUNT(*) FROM haui_admissions.programs;"
 ```
 
-Should return: 5 programs
-
----
+Expected result: 5 programs
 
 ### Step 3: Configure Environment
 
@@ -61,17 +56,15 @@ Should return: 5 programs
 # Copy template
 copy .env.example .env
 
-# Edit .env - Change these lines:
+# Edit .env with your PostgreSQL password
 DB_PASSWORD=your_postgres_password
 ```
 
-**Important**: Make sure `DB_NAME=haui_admissions`
-
----
+Important: Ensure `DB_NAME=haui_admissions`
 
 ### Step 4: Start Services
 
-**Terminal 1 - Start Ollama:**
+**Terminal 1 — Ollama:**
 ```bash
 scripts\start_ollama.bat
 ```
@@ -79,14 +72,12 @@ scripts\start_ollama.bat
 This will:
 - Check if Ollama is running
 - Pull `qwen2.5:1.5b` model (~1.5GB)
-- Pull `nomic-embed-text` (embeddings)
+- Pull `nomic-embed-text` embeddings
 - Display available models
 
-⏱️ Wait until you see: `[OK] Ollama started successfully!`
+Wait for: `[OK] Ollama started successfully!`
 
----
-
-**Terminal 2 - Start Open WebUI:**
+**Terminal 2 — Open WebUI:**
 ```bash
 scripts\start_webui.bat
 ```
@@ -95,8 +86,6 @@ This will:
 - Create `open-webui/data` directory
 - Start Open WebUI on port 3000
 - Connect to Ollama
-
----
 
 ### Step 5: Access the Chatbot
 
@@ -113,7 +102,7 @@ http://localhost:3000
 
 ---
 
-## 💬 Try These Prompts
+## Try These Prompts
 
 ```
 1. "Tôi muốn học chuyên ngành CNTT, có điều kiện gì?"
@@ -125,7 +114,7 @@ http://localhost:3000
 
 ---
 
-## 🔍 Verify Installation
+## Verify Installation
 
 ### Check Components
 
@@ -152,7 +141,7 @@ Expected: Chatbot interface loads
 
 ---
 
-## 📁 Project Structure Reference
+## Project Structure Reference
 
 ```
 open-webui/data/           ← Runtime data (auto-created)
@@ -177,7 +166,7 @@ README.md                  ← Full documentation
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Issue: "Ollama not found"
 ```bash
@@ -219,7 +208,7 @@ PARAMETER num_ctx 2048
 
 ---
 
-## 📚 Next Steps
+## Next Steps
 
 1. **Add Custom Data**
    - Place PDF files in `data/pdfs/`
@@ -242,7 +231,7 @@ PARAMETER num_ctx 2048
 
 ---
 
-## 📞 Support
+## Support
 
 - **Ollama Issues**: https://github.com/ollama/ollama
 - **Open WebUI Issues**: https://github.com/open-webui/open-webui
@@ -251,7 +240,7 @@ PARAMETER num_ctx 2048
 
 ---
 
-## ✅ Success Checklist
+## Success Checklist
 
 - [ ] Python 3.9+ installed
 - [ ] PostgreSQL running with haui_admissions database
@@ -263,8 +252,8 @@ PARAMETER num_ctx 2048
 - [ ] Can chat with model
 - [ ] Responses appear within 3 seconds
 
-**All checked?** 🎉 Your chatbot is ready!
+All checked? Your chatbot is ready!
 
 ---
 
-**Happy chatting! 💬**
+Happy chatting!

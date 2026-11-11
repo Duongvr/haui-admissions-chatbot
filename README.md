@@ -1,26 +1,26 @@
-# HAUI Admissions Chatbot - Integrated Setup
+# HAUI Admissions Chatbot
 
 Hệ thống chatbot tuyển sinh thông minh sử dụng **Open WebUI + Ollama + PostgreSQL** cho Trường Đại học Công Nghiệp Hà Nội (HAUI).
 
-## 🎯 Tính Năng Chính
+## Features
 
-✨ **Open WebUI** - Giao diện chat trực quan  
-🧠 **Ollama LLM** - Mô hình ngôn ngữ local  
-🗄️ **PostgreSQL** - Lưu trữ tri thức tuyển sinh  
-📚 **RAG Pipeline** - Truy vấn ngữ cảnh thông minh  
-📄 **PDF Processing** - Nạp tài liệu HAUI  
-💾 **ChromaDB** - Vector store tích hợp  
+- **Open WebUI** — Giao diện chat trực quan
+- **Ollama LLM** — Mô hình ngôn ngữ local
+- **PostgreSQL** — Lưu trữ tri thức tuyển sinh
+- **RAG Pipeline** — Truy vấn ngữ cảnh thông minh
+- **PDF Processing** — Nạp tài liệu HAUI
+- **ChromaDB** — Vector store tích hợp
 
-## 📋 Yêu Cầu Hệ Thống
+## System Requirements
 
 - **OS**: Windows 10/11, macOS, Linux
 - **Python**: 3.9+
 - **PostgreSQL**: 14+
-- **Ollama**: Mới nhất
-- **RAM**: 8GB tối thiểu (16GB khuyến nghị)
-- **Storage**: 20GB+ (cho mô hình + dữ liệu)
+- **Ollama**: Latest
+- **RAM**: 8GB minimum (16GB recommended)
+- **Storage**: 20GB+ (for models and data)
 
-## 🚀 Cài Đặt Nhanh (Windows)
+## Quick Start
 
 ### 1. Clone Repository
 
@@ -40,279 +40,255 @@ pip install -r src\requirements.txt
 ### 3. Setup PostgreSQL
 
 ```bash
-# Tạo database
+# Create database
 createdb -U postgres haui_admissions
 
-# Tạo schema
+# Create schema
 psql -U postgres -d haui_admissions -f db\schema.sql
 
-# Nạp dữ liệu mẫu
+# Load sample data
 psql -U postgres -d haui_admissions -f db\seed_data.sql
 ```
 
-### 4. Cấu Hình Environment
+### 4. Configure Environment
 
 ```bash
 copy .env.example .env
-# Chỉnh sửa .env với credentials của bạn
+# Edit .env with your credentials
 ```
 
-### 5. Khởi Động Services
+### 5. Start Services
 
-**Terminal 1 - Ollama:**
+**Terminal 1 — Ollama:**
 ```bash
 scripts\start_ollama.bat
 ```
 
-**Terminal 2 - Open WebUI:**
+**Terminal 2 — Open WebUI:**
 ```bash
 scripts\start_webui.bat
 ```
 
-**Terminal 3 - Backend (tuỳ chọn):**
+**Terminal 3 — Backend (optional):**
 ```bash
-# Nếu có Python backend
+# If you have Python backend
 python src\main.py
 ```
 
-### 6. Truy Cập
+### 6. Access
 
 - **Open WebUI**: http://localhost:3000
 - **Ollama API**: http://localhost:11434
 - **PostgreSQL**: localhost:5432
 
-## 📁 Cấu Trúc Dự Án
+## Project Structure
 
 ```
 haui-admissions-chatbot/
-│
-├── 📂 open-webui/              # Open WebUI runtime
-│   └── data/                   # SQLite DB, ChromaDB, uploads (git ignored)
-│
-├── 📂 db/                      # Database scripts
-│   ├── schema.sql              # Tạo bảng PostgreSQL
-│   └── seed_data.sql           # Dữ liệu mẫu ban đầu
-│
-├── 📂 docs/                    # Documentation
-│   ├── srs_document.md         # Yêu cầu phần mềm
-│   └── architecture.md         # Kiến trúc hệ thống
-│
-├── 📂 models/                  # AI Models
-│   └── Modelfile               # Ollama custom model
-│
-├── 📂 scripts/                 # Windows scripts
-│   ├── start_ollama.bat        # Khởi động Ollama
-│   └── start_webui.bat         # Khởi động Open WebUI
-│
-├── 📂 src/                     # Source code
-│   ├── rag_pipeline/           # PDF processing
+├── open-webui/                 # Open WebUI runtime
+│   └── data/                   # SQLite DB, ChromaDB, uploads
+├── db/
+│   ├── schema.sql              # PostgreSQL schema
+│   ├── indexes.sql             # Database indices
+│   └── seed_data.sql           # Sample data
+├── docs/
+│   ├── srs_document.md         # Requirements
+│   ├── architecture.md         # System design
+│   └── progress.md             # Development progress
+├── models/
+│   └── Modelfile               # Ollama model config
+├── scripts/
+│   ├── start_ollama.bat
+│   └── start_webui.bat
+├── src/
+│   ├── rag_pipeline/
 │   │   ├── pdf_processor.py
 │   │   ├── chunker.py
 │   │   └── embeddings.py
-│   ├── main.py                 # Backend entry point (nếu cần)
-│   └── requirements.txt        # Python dependencies
-│
-├── .env.example                # Config template
-├── .gitignore                  # Git ignore rules
-└── README.md                   # This file
+│   └── requirements.txt
+├── .env.example
+├── .gitignore
+├── LICENSE
+└── README.md
 ```
 
-## 🔧 Cấu Hình Chi Tiết
+## Configuration
 
 ### PostgreSQL Schema
 
-**Bảng chính:**
-- `programs` - Chương trình học
-- `admissions_criteria` - Điều kiện tuyển sinh
-- `faq` - Câu hỏi thường gặp
-- `chat_history` - Lịch sử chat
-- `embeddings` - Vector embeddings
+Key tables:
+- `programs` — Academic programs
+- `admissions_criteria` — Entry requirements
+- `faq` — Frequently asked questions
+- `chat_history` — Chat logs
+- `embeddings` — Vector embeddings
 
 ### Ollama Models
 
 ```bash
-# Tải models
-ollama pull qwen2.5:1.5b       # Model nhẹ (~1.5GB)
+# Pull models
+ollama pull qwen2.5:1.5b       # Lightweight (~1.5GB)
 ollama pull nomic-embed-text   # Embedding model
 
-# Hoặc models khác
-ollama pull mistral             # Mạnh hơn (~4GB)
-ollama pull llama2              # Lớn (~4GB)
+# Or alternatives
+ollama pull mistral             # Stronger (~4GB)
+ollama pull llama2              # Larger (~4GB)
 ```
 
 ### Open WebUI Configuration
 
-- Đường dẫn dữ liệu: `./open-webui/data/`
-- API Ollama: `http://localhost:11434`
+- Data path: `./open-webui/data/`
+- Ollama API: `http://localhost:11434`
 - Port: 3000
-- Database: SQLite tích hợp + ChromaDB
+- Database: Built-in SQLite + ChromaDB
 
-## 📚 Sử Dụng
+## Usage
 
 ### Chat Interface
 
-1. Mở http://localhost:3000
-2. Tạo tài khoản hoặc đăng nhập
-3. Chọn model (ví dụ: `haui-admissions-model`)
-4. Bắt đầu chat
+1. Open http://localhost:3000
+2. Create account or login
+3. Select model (e.g., `haui-admissions-model`)
+4. Start chatting
 
-**Ví dụ câu hỏi:**
-- "Tôi muốn học CNTT, có điều kiện gì?"
-- "Học phí bao nhiêu?"
-- "Hạn nộp hồ sơ là khi nào?"
+**Example questions:**
+- "I want to study IT, what are the requirements?"
+- "What is the tuition fee?"
+- "When is the application deadline?"
 
-### Nạp Tài Liệu
+### Upload Documents
 
-#### Phương pháp 1: Upload qua Web UI
+#### Method 1: Web UI Upload
 1. Open WebUI → Documents → Upload PDF
-2. System tự động xử lý embedding
+2. System automatically processes embeddings
 
-#### Phương pháp 2: Xử lý từ script
+#### Method 2: Script Processing
 ```bash
 python src\rag_pipeline\pdf_processor.py --file data/admissions_guide.pdf
 ```
 
-### Tùy Chỉnh Model
+### Customize Model
 
-Chỉnh sửa `models/Modelfile`:
+Edit `models/Modelfile`:
 
 ```dockerfile
 FROM mistral:latest
 
-SYSTEM """Bạn là trợ lý tuyển sinh HAUI...
-[Chỉnh sửa system prompt tại đây]
+SYSTEM """You are an HAUI admissions assistant...
+[Customize system prompt here]
 """
 
 PARAMETER temperature 0.7
 PARAMETER top_k 40
 ```
 
-Sau đó:
+Then:
 ```bash
 ollama create haui-admissions-model -f models/Modelfile
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
-### Ollama không chạy
+### Ollama not running
 
 ```bash
-# Kiểm tra status
+# Check status
 ollama list
 
-# Khởi động thủ công
+# Start manually
 ollama serve
 
-# Kiểm tra kết nối
+# Check connection
 curl http://localhost:11434/api/tags
 ```
 
 ### PostgreSQL connection error
 
 ```bash
-# Kiểm tra PostgreSQL
+# Check PostgreSQL
 pg_isready
 
-# Kiểm tra credentials trong .env
-# Chắc chắn rằng:
+# Verify credentials in .env
+# Ensure:
 # DB_HOST=localhost
 # DB_USER=postgres
 # DB_PASSWORD=[correct password]
 ```
 
-### Open WebUI không lưu dữ liệu
+### Open WebUI data not persisting
 
-Đảm bảo thư mục tồn tại:
+Ensure directory exists:
 ```bash
 mkdir open-webui\data
-# Thư mục này sẽ chứa SQLite DB và ChromaDB
+# Contains SQLite DB and ChromaDB
 ```
 
 ### Out of memory
 
 ```bash
-# Sử dụng model nhẹ hơn
+# Use lighter model
 ollama run qwen2.5:1.5b
 
-# Hoặc trong Modelfile
-PARAMETER num_ctx 2048  # Giảm context window
+# Or in Modelfile
+PARAMETER num_ctx 2048  # Reduce context window
 ```
 
-## 🔐 Security
+## Security
 
-- **Environment variables**: Sử dụng `.env` cho credentials
-- **Open WebUI**: Bảo vệ bằng username/password
-- **PostgreSQL**: Không expose ra ngoài localhost
-- **Ollama**: Chạy local, không công khai
+- **Environment variables**: Use `.env` for credentials
+- **Open WebUI**: Protect with username/password
+- **PostgreSQL**: Not exposed outside localhost
+- **Ollama**: Local only, not public
 
-## 📊 Kiến Trúc Hệ Thống
+## System Architecture
 
 ```
-┌─────────────────┐
-│ User Browser    │
-└────────┬────────┘
-         │ HTTP/WebSocket
-┌────────▼──────────────┐
-│   Open WebUI          │
-│ (Chat Interface)      │
-└────────┬──────────────┘
-         │
-┌────────▼──────────────┐
-│  Ollama API           │
-│ (Inference Engine)    │
-└────────┬──────────────┘
-         │ HTTP
-         │
+User Devices (Browser)
+         ↓ HTTP/WebSocket
+┌────────────────────────┐
+│   Open WebUI           │
+│  (Chat Interface)      │
+└────────┬───────────────┘
+         ↓ HTTP
+┌────────────────────────┐
+│  Ollama API            │
+│ (LLM Inference)        │
+└────────┬───────────────┘
+         ↓
     ┌────┴────┐
-    │          │
-┌───▼──┐  ┌──▼───┐
-│ LLM  │  │ RAG  │
-│Model │  │Emb.  │
-└──────┘  └──┬───┘
-             │
-┌────────────▼──────────────┐
-│   PostgreSQL + ChromaDB   │
-│  (Knowledge Base)         │
-└───────────────────────────┘
+    ↓         ↓
+┌────────┐ ┌──────┐
+│  LLM   │ │ RAG  │
+│ Model  │ │Search│
+└────────┘ └──┬───┘
+              ↓
+      ┌───────────────────┐
+      │ PostgreSQL +      │
+      │ ChromaDB          │
+      │ (Knowledge Base)  │
+      └───────────────────┘
 ```
 
-## 🤝 Đóng Góp
+## Contributing
 
-1. Fork repository
-2. Tạo feature branch (`git checkout -b feature/XYZ`)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/XYZ`)
 3. Commit changes (`git commit -m 'Add XYZ'`)
 4. Push to branch (`git push origin feature/XYZ`)
 5. Open Pull Request
 
-## 📞 Liên Hệ
+## Contact
 
 - **Email**: admissions@haui.edu.vn
 - **Website**: https://haui.edu.vn
-- **Phone**: +84-24-XXXX-XXXX
 
-## 📝 License
+## License
 
-MIT License - Xem LICENSE file
+MIT License — See LICENSE file for details
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- Ollama - LLM inference engine
-- Open WebUI - Chat interface
-- PostgreSQL - Database
-- ChromaDB - Vector store
-- LangChain - RAG pipeline
-
-
-## Licensing
-
-This project is licensed under the Apache License 2.0.
-
-### Third-party components
-
-This project includes:
-
-- Open WebUI (Open WebUI License)
-- Ollama (MIT License)
-- pgvector (PostgreSQL License)
-
-See THIRD_PARTY_LICENSES.md for details.
+- Ollama — LLM inference engine
+- Open WebUI — Chat interface
+- PostgreSQL — Database
+- ChromaDB — Vector store

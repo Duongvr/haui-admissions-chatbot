@@ -1,10 +1,10 @@
-# 📊 Hướng dẫn chuẩn bị dữ liệu
+# Hướng dẫn chuẩn bị dữ liệu
 
 **Mục tiêu:** Chuẩn bị thư mục `data/input/` với 3 file dữ liệu gốc mà agent sẽ xử lý trong Giai đoạn 3-5.
 
 ---
 
-## 📂 Cấu trúc thư mục dữ liệu
+## Cấu trúc thư mục dữ liệu
 
 Tạo thư mục như sau (tất cả vào thư mục gốc dự án):
 
@@ -19,7 +19,7 @@ haui-admissions-chatbot/
 
 ---
 
-## 📥 File 1: `haui_markdown.zip`
+## File 1: `haui_markdown.zip`
 
 **Nội dung:** 268 file Markdown (`.md`), mỗi bài một file, đã làm sạch.
 
@@ -47,7 +47,7 @@ Văn bản, bảng, links...
 
 ---
 
-## 📥 File 2: `haui_2020_nay_sach.jsonl`
+## File 2: `haui_2020_nay_sach.jsonl`
 
 **Nội dung:** Mỗi dòng một bài viết (JSON Lines format), gồm:
 
@@ -79,7 +79,7 @@ Văn bản, bảng, links...
 
 ---
 
-## 📥 File 3: `haui_bi_loai.csv`
+## File 3: `haui_bi_loai.csv`
 
 **Nội dung:** Danh sách các bài bỏ (94 bài), cột `article_id, tieu_de, ly_do`.
 
@@ -99,7 +99,7 @@ article_089,Bản sửa lỗi,Nội dung trùng lặp
 
 ---
 
-## 🛠️ Cách tạo file nếu chưa có
+## Cách tạo file nếu chưa có
 
 ### Tùy chọn A: Dùng script agent cung cấp (Giai đoạn 3)
 Agent sẽ viết script tạo `haui_2020_nay_sach.jsonl` từ `haui_markdown.zip`.
@@ -122,7 +122,7 @@ Agent sẽ viết script tạo `haui_2020_nay_sach.jsonl` từ `haui_markdown.zi
 
 ---
 
-## ✅ Checklist chuẩn bị dữ liệu
+## Checklist chuẩn bị dữ liệu
 
 - [ ] Thư mục `data/input/` tồn tại
 - [ ] File `haui_markdown.zip` đặt sẵn (hoặc để trống, agent sẽ hỏi)
@@ -132,7 +132,7 @@ Agent sẽ viết script tạo `haui_2020_nay_sach.jsonl` từ `haui_markdown.zi
 
 ---
 
-## 🚀 Tiếp theo
+## Tiếp theo
 
 Khi dữ liệu sẵn sàng, agent sẽ:
 1. **Giai đoạn 3:** Trích bảng từ `haui_2020_nay_sach.jsonl` → CSV chuẩn hóa
@@ -141,7 +141,7 @@ Khi dữ liệu sẵn sàng, agent sẽ:
 
 ---
 
-## 📞 Câu hỏi thường gặp
+## Câu hỏi thường gặp
 
 **Q: Nếu chưa có dữ liệu gốc từ máy cào?**
 A: Agent sẽ tạo dữ liệu mẫu để test luồng; bạn thay sau khi có dữ liệu thật.

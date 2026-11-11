@@ -1,25 +1,25 @@
-# 📋 Nhật ký tiến độ dự án HAUI Admissions Chatbot
+# Nhật ký tiến độ dự án HAUI Admissions Chatbot
 
 **Ngày bắt đầu:** Tháng 11, 2024  
 **Trạng thái hiện tại:** Giai đoạn 0 - Khảo sát môi trường
 
 ---
 
-## 🔍 Giai đoạn 0: Khảo sát môi trường
+## Giai đoạn 0: Khảo sát môi trường
 
 ### Kết quả kiểm tra (Phần A)
 
 | Thành phần | Kết quả | Chi tiết | Ghi chú |
 |-----------|--------|---------|--------|
-| **Python** | ✅ Có | 3.14.3 | Hiện tại có thể dùng |
-| **Conda** | ❌ Không trong PATH | - | Cần thêm vào PATH hoặc dùng venv |
-| **Ollama** | ❌ Chưa cài | - | **Cần cài** (https://ollama.ai) |
-| **PostgreSQL** | ❌ Chưa cài | - | **Cần cài** |
-| **RAM** | ✅ OK | 7.34 GB | Đủ cho model 1.5B-7B |
-| **GPU** | ⚠️ Chưa kiểm tra | - | Sẽ kiểm tra khi cài Ollama |
-| **Port 8080** | ⚠️ CHIẾM | Có service đang chạy | Cần kiểm tra hoặc đổi port Open WebUI |
-| **Port 11434** | ✅ TRỐNG | Ollama sẽ dùng | OK |
-| **Port 5432** | ✅ TRỐNG | PostgreSQL sẽ dùng | OK |
+| **Python** | ✓ Có | 3.14.3 | Hiện tại có thể dùng |
+| **Conda** | ✗ Không trong PATH | - | Cần thêm vào PATH hoặc dùng venv |
+| **Ollama** | ✗ Chưa cài | - | Cần cài (https://ollama.ai) |
+| **PostgreSQL** | ✗ Chưa cài | - | Cần cài |
+| **RAM** | ✓ OK | 7.34 GB | Đủ cho model 1.5B-7B |
+| **GPU** | ~ Chưa kiểm tra | - | Sẽ kiểm tra khi cài Ollama |
+| **Port 8080** | ~ CHIẾM | Có service đang chạy | Cần kiểm tra hoặc đổi port Open WebUI |
+| **Port 11434** | ✓ TRỐNG | Ollama sẽ dùng | OK |
+| **Port 5432** | ✓ TRỐNG | PostgreSQL sẽ dùng | OK |
 
 ### Hành động cần làm ngay
 
@@ -46,7 +46,7 @@ Hoặc dùng Python venv trực tiếp (đơn giản hơn).
 
 ---
 
-## 📊 Đề xuất phương án kiến trúc
+## Đề xuất phương án kiến trúc
 
 ### Phương án V1: PostgreSQL + pgvector
 - **Ưu điểm:** Tất cả dữ liệu trong một CSDL, truy vấn tích hợp RAG, bảo mật tập trung
@@ -63,16 +63,16 @@ Hoặc dùng Python venv trực tiếp (đơn giản hơn).
 
 ---
 
-## 📝 Các file hướng dẫn sẽ tạo
+## Các file hướng dẫn sẽ tạo
 
-- [ ] `docs/install_postgresql_windows.md` — Cài PG trên Windows step-by-step
+- [ ] docs/install_postgresql_windows.md — Cài PG trên Windows step-by-step
 - [ ] `docs/prepare_data.md` — Chuẩn bị thư mục `data/input/`
 - [ ] `docs/architecture.md` — Cập nhật theo phương án chọn
 - [ ] `scripts/setup_env.bat` — Script tự động setup Conda/venv
 
 ---
 
-## ✅ Checklist Giai đoạn 0
+## Checklist Giai đoạn 0
 
 - [ ] Xác nhận port 8080 (đổi port hay dùng tiếp?)
 - [ ] Chọn phương án V1/V2
@@ -82,7 +82,7 @@ Hoặc dùng Python venv trực tiếp (đơn giản hơn).
 
 ---
 
-## 🚀 Tiếp theo
+## Tiếp theo
 
 Sau khi bạn trả lời 3 câu hỏi trên, tôi sẽ:
 1. Viết hướng dẫn cài Ollama và PostgreSQL chi tiết

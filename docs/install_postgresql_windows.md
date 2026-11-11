@@ -1,10 +1,10 @@
-# 🗄️ Hướng dẫn cài PostgreSQL trên Windows
+# Hướng dẫn cài PostgreSQL trên Windows
 
 **Mục tiêu:** Cài PostgreSQL 16+ (khuyến nghị 16 hoặc 17) trên Windows 10/11, tạo user và database cho HAUI Admissions.
 
 ---
 
-## 📥 Bước 1: Tải PostgreSQL
+## Bước 1: Tải PostgreSQL
 
 1. Vào https://www.postgresql.org/download/windows/
 2. Chọn **"Interactive installer"** phiên bản mới nhất (ưu tiên 16.x hoặc 17.x)
@@ -12,16 +12,16 @@
 
 ---
 
-## 🔧 Bước 2: Cài đặt PostgreSQL
+## Bước 2: Cài đặt PostgreSQL
 
 1. **Mở file `.exe`** (ví dụ `postgresql-16.4-1-windows-x64.exe`)
 2. **Màn hình chào mừng:** Bấm **Next**
 3. **Installation Directory:** Giữ mặc định `C:\Program Files\PostgreSQL\16` → **Next**
 4. **Select Components:** Chọn:
-   - ✅ PostgreSQL Server
-   - ✅ pgAdmin 4
-   - ✅ Stack Builder (tùy chọn, để sau)
-   - ❌ Command Line Tools (tùy chọn, bạn có thể bỏ)
+   - PostgreSQL Server
+   - pgAdmin 4
+   - Stack Builder (tùy chọn, để sau)
+   - Command Line Tools (tùy chọn, bạn có thể bỏ)
    → **Next**
 5. **Data Directory:** Giữ mặc định `C:\Program Files\PostgreSQL\16\data` → **Next**
 6. **Password:** 
@@ -33,11 +33,11 @@
 9. **Bắt đầu cài:** Bấm **Next**, chờ hoàn thành
 10. **Stack Builder:** Bỏ qua (bấm **Finish** không chọn gì)
 
-✅ **PostgreSQL đã cài xong**
+PostgreSQL đã cài xong
 
 ---
 
-## ✨ Bước 3: Kiểm tra cài đặt
+## Bước 3: Kiểm tra cài đặt
 
 Mở **Command Prompt** (Win + R → `cmd`) chạy:
 
@@ -45,7 +45,7 @@ Mở **Command Prompt** (Win + R → `cmd`) chạy:
 psql --version
 ```
 
-Nếu hiện `psql (PostgreSQL) 16.x` → ✅ Cài thành công
+Nếu hiện `psql (PostgreSQL) 16.x` → Cài thành công
 
 Nếu lỗi `psql: The term 'psql' is not recognized`:
 - Thêm PostgreSQL vào PATH:
@@ -57,7 +57,7 @@ Nếu lỗi `psql: The term 'psql' is not recognized`:
 
 ---
 
-## 🗄️ Bước 4: Tạo Database `haui_admissions`
+## Bước 4: Tạo Database `haui_admissions`
 
 Mở **Command Prompt** chạy:
 
@@ -78,7 +78,7 @@ Kết quả:
 CREATE DATABASE
 ```
 
-✅ Database tạo xong. Kiểm tra:
+Database tạo xong. Kiểm tra:
 
 ```sql
 \l
@@ -93,7 +93,7 @@ Thoát shell:
 
 ---
 
-## 👤 Bước 5: Tạo user chỉ đọc `haui_readonly`
+## Bước 5: Tạo user chỉ đọc `haui_readonly`
 
 Mở **Command Prompt** chạy:
 
@@ -128,7 +128,7 @@ Thoát:
 
 ---
 
-## 🔐 Bước 6: Cập nhật `.env`
+## Bước 6: Cập nhật `.env`
 
 Mở file `.env.example`, sao chép nội dung, tạo file `.env` cùng thư mục gốc dự án:
 
@@ -145,11 +145,11 @@ DB_READONLY_USER=haui_readonly
 DB_READONLY_PASSWORD=readonly_pass_2024
 ```
 
-**⚠️ LƯU Ý:** File `.env` sẽ không commit lên GitHub (đã có trong `.gitignore`).
+LƯU Ý: File .env sẽ không commit lên GitHub (đã có trong .gitignore).
 
 ---
 
-## ✅ Kiểm tra kết nối
+## Kiểm tra kết nối
 
 Mở **Command Prompt** chạy:
 
@@ -157,11 +157,11 @@ Mở **Command Prompt** chạy:
 psql -U postgres -h localhost -d haui_admissions -c "SELECT version();"
 ```
 
-Nếu hiện thông tin phiên bản PostgreSQL → ✅ Kết nối OK
+Nếu hiện thông tin phiên bản PostgreSQL → Kết nối OK
 
 ---
 
-## 📝 Cài pgvector (nếu chọn V1)
+## Cài pgvector (nếu chọn V1)
 
 **Chỉ làm khi:**
 - Bạn chọn **phương án V1** (PostgreSQL + pgvector)
@@ -216,7 +216,7 @@ Yêu cầu Visual Studio Build Tools, Git, và khá phức tạp. **Bỏ qua n�
 
 ---
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Lỗi: "psql: FATAL: Ident authentication failed"
 **Nguyên nhân:** Phương pháp xác thực không khớp
@@ -238,7 +238,7 @@ Yêu cầu Visual Studio Build Tools, Git, và khá phức tạp. **Bỏ qua n�
 
 ---
 
-## 📚 Tài liệu tham khảo
+## Tài liệu tham khảo
 
 - PostgreSQL Download: https://www.postgresql.org/download/windows/
 - pgvector GitHub: https://github.com/pgvector/pgvector
@@ -246,6 +246,6 @@ Yêu cầu Visual Studio Build Tools, Git, và khá phức tạp. **Bỏ qua n�
 
 ---
 
-**✅ Hoàn thành khi:** Bạn chạy lệnh kiểm tra trên và nhận được kết quả OK.
+Hoàn thành khi: Bạn chạy lệnh kiểm tra trên và nhận được kết quả OK.
 
 Tiếp theo: Báo cho agent hoàn thành Bước 3 (Cài PostgreSQL).
